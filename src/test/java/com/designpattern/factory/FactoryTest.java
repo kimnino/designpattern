@@ -11,18 +11,15 @@ public class FactoryTest {
     @Test
     public void test() {
 
+        HamburgerStore seoulBurger = new SeoulHamburgerStore();
+        HamburgerStore busanBurger = new BusanHamburgerStore();
 
+        Hamburger hamburger = seoulBurger.orderHamburger("chicken");
+        System.out.println("첫 번째 주문한" + hamburger.getName() + "\n");
+
+        hamburger = busanBurger.orderHamburger("shrimp");
+        System.out.println("두 번째 주문한" + hamburger.getName() + "\n");
     }
 
-    private Hamburger orderHamburger(String type) {
-        HamburgerFactory factory = new HamburgerFactory();
 
-        Hamburger hamburger = factory.createHamburger(type);
-
-        hamburger.prepare();
-        hamburger.cook();
-        hamburger.wrap();
-
-        return hamburger;
-    }
 }

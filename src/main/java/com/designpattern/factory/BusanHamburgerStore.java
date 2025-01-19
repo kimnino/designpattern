@@ -1,19 +1,17 @@
 package com.designpattern.factory;
 
-public class HamburgerFactory {
+public class BusanHamburgerStore extends HamburgerStore {
 
+    @Override
     public Hamburger createHamburger(String type) {
-
-        Hamburger hamburger = null;
-
         if ("cheese".equals(type)) {
-            hamburger = new CheeseBurger();
+            return new BusanCheeseBurger();
         } else if ("chicken".equals(type)) {
-            hamburger = new ChickenBurger();
+            return new BusanChickenBurger();
         } else if ("shrimp".equals(type)) {
-            hamburger = new ShrimpBurger();
+            return new BusanShrimpBurger();
         }
 
-        return hamburger;
+        return null;
     }
 }
