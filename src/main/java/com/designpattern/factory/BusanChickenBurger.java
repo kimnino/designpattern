@@ -1,10 +1,17 @@
 package com.designpattern.factory;
 
 public class BusanChickenBurger extends Hamburger {
-    public BusanChickenBurger() {
-        name = "부산치킨버거";
-        sauce = "부산식 매운 소스";
-        bread = "부산식 통밀빵";
-        toppings.add("씨앗호떡");
+    HamburgerIngredientFactory ingredientFactory;
+
+
+    public BusanChickenBurger(HamburgerIngredientFactory ingredientFactory) {
+        this.ingredientFactory = ingredientFactory;
+    }
+
+    public void prepare() {
+        System.out.println("Preparing busan chiken burger");
+        bread = ingredientFactory.createBread();
+        cheese = ingredientFactory.createCheese();
+        sauce = ingredientFactory.createSauce();
     }
 }
