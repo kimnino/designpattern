@@ -1,11 +1,16 @@
 package com.designpattern.factory;
 
 public class SeoulShrimpBurger extends Hamburger {
-    public SeoulShrimpBurger() {
-        name = "서울새우버거";
-        sauce = "마요소스";
-        bread = "페스츄리";
-        toppings.add("새우깡");
-        toppings.add("매운새우깡");
+    HamburgerIngredientFactory ingredientFactory;
+
+    public SeoulShrimpBurger(HamburgerIngredientFactory ingredientFactory) {
+        this.ingredientFactory = ingredientFactory;
+    }
+
+    public void prepare() {
+        System.out.println("준비중입니다. 서울새우버거!!");
+        bread = ingredientFactory.createBread();
+        sauce = ingredientFactory.createSauce();
+        cheese = ingredientFactory.createCheese();
     }
 }
